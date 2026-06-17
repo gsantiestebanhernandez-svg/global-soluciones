@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Global Soluciones — Base de Procedimientos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-
   :root {
-    --rojo: #CC1B1B;
-    --rojo-oscuro: #9B0000;
-    --azul: #003DA5;
-    --azul-oscuro: #002580;
-    --dorado: #F5C518;
+    --rojo: #D32F2F;
+    --rojo-dark: #B71C1C;
+    --azul: #1565C0;
+    --azul-dark: #0D47A1;
+    --dorado: #F9A825;
+    --dorado-dark: #F57F17;
     --blanco: #FFFFFF;
     --negro: #0A0A0A;
     --gris-oscuro: #1A1A1A;
-    --gris-medio: #2C2C2C;
-    --gris-claro: #f5f5f5;
+    --gris-medio: #2A2A2A;
+    --gris-claro: #F5F5F5;
+    --texto-gris: #888888;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--negro) 0%, #1a0000 50%, #00001a 100%);
+    background: linear-gradient(135deg, var(--negro) 0%, #1a0000 50%, #000a1a 100%);
     position: relative;
     overflow: hidden;
   }
@@ -47,25 +48,26 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(ellipse at center, rgba(204,27,27,0.15) 0%, transparent 60%);
-    animation: pulse 4s ease-in-out infinite;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(211,47,47,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(21,101,192,0.15) 0%, transparent 40%);
+    animation: rotateBg 20s linear infinite;
   }
 
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 1; }
+  @keyframes rotateBg {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .login-card {
+    position: relative;
     background: var(--gris-oscuro);
-    border: 2px solid var(--rojo);
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 16px;
     padding: 48px 40px;
-    width: 100%;
-    max-width: 420px;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 0 60px rgba(204,27,27,0.3);
+    width: 420px;
+    max-width: 95vw;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
   }
 
   .login-logo {
@@ -74,123 +76,117 @@
   }
 
   .login-logo .brand-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--blanco);
-    letter-spacing: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--rojo), var(--dorado), var(--azul));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1;
-  }
-
-  .login-logo .brand-name span {
-    color: var(--rojo);
   }
 
   .login-logo .brand-sub {
     font-size: 11px;
-    color: var(--dorado);
-    letter-spacing: 4px;
+    letter-spacing: 3px;
+    color: var(--texto-gris);
     text-transform: uppercase;
     margin-top: 4px;
   }
 
-  .login-logo .brand-tag {
-    font-size: 11px;
-    color: #888;
-    margin-top: 8px;
-    letter-spacing: 1px;
-  }
-
   .login-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--rojo), var(--dorado));
-    margin: 20px auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rojo), var(--dorado), var(--azul));
     border-radius: 2px;
+    margin: 24px 0;
   }
 
   .login-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    color: #aaa;
+    font-size: 14px;
+    color: var(--texto-gris);
     text-align: center;
     margin-bottom: 28px;
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .form-group label {
     display: block;
-    font-size: 12px;
-    color: var(--dorado);
-    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--texto-gris);
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 8px;
-    font-weight: 600;
   }
 
   .form-group input {
     width: 100%;
-    background: var(--gris-medio);
-    border: 1px solid #444;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px;
     padding: 14px 16px;
     color: var(--blanco);
     font-size: 15px;
     font-family: 'Inter', sans-serif;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
     outline: none;
   }
 
   .form-group input:focus {
-    border-color: var(--rojo);
-    box-shadow: 0 0 0 3px rgba(204,27,27,0.15);
+    border-color: var(--dorado);
+    background: rgba(249,168,37,0.05);
+    box-shadow: 0 0 0 3px rgba(249,168,37,0.1);
   }
 
   .btn-login {
     width: 100%;
-    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
+    background: linear-gradient(135deg, var(--rojo), var(--rojo-dark));
     border: none;
     border-radius: 8px;
     padding: 16px;
-    color: var(--blanco);
-    font-family: 'Oswald', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 2px;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s;
     margin-top: 8px;
+    font-family: 'Inter', sans-serif;
   }
 
   .btn-login:hover {
-    background: linear-gradient(135deg, #e02020, var(--rojo));
+    background: linear-gradient(135deg, var(--rojo-dark), #7f0000);
     transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(204,27,27,0.4);
+    box-shadow: 0 8px 24px rgba(211,47,47,0.4);
   }
 
   .login-error {
-    background: rgba(204,27,27,0.15);
-    border: 1px solid var(--rojo);
+    background: rgba(211,47,47,0.15);
+    border: 1px solid rgba(211,47,47,0.3);
     border-radius: 8px;
-    padding: 12px;
-    color: #ff6b6b;
+    padding: 12px 16px;
     font-size: 13px;
-    text-align: center;
-    margin-top: 16px;
+    color: #ff6b6b;
+    margin-top: 12px;
     display: none;
   }
 
-  /* ===== APP ===== */
-  #app { display: none; }
+  /* ===== APP LAYOUT ===== */
+  #app {
+    display: none;
+    min-height: 100vh;
+  }
 
   /* HEADER */
   .header {
     background: var(--gris-oscuro);
-    border-bottom: 3px solid var(--rojo);
+    border-bottom: 2px solid var(--rojo);
     padding: 0 24px;
     height: 64px;
     display: flex;
@@ -199,34 +195,16 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
 
   .header-brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .header-logo {
-    font-family: 'Oswald', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--blanco);
-    letter-spacing: 1px;
-  }
-
-  .header-logo span { color: var(--rojo); }
-
-  .header-badge {
-    background: var(--azul);
-    color: var(--blanco);
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--rojo), var(--dorado));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .header-right {
@@ -235,139 +213,164 @@
     gap: 16px;
   }
 
-  .user-pill {
+  .user-badge {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: var(--gris-medio);
-    border: 1px solid #444;
-    border-radius: 24px;
-    padding: 8px 16px;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--texto-gris);
   }
 
-  .user-avatar {
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, var(--rojo), var(--dorado));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .user-badge span { color: var(--blanco); font-weight: 600; }
+
+  .btn-admin-toggle {
+    background: linear-gradient(135deg, var(--azul), var(--azul-dark));
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: white;
     font-size: 12px;
     font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: none;
+    font-family: 'Inter', sans-serif;
   }
-
-  .user-name { font-size: 13px; color: #ccc; }
-  .user-role { font-size: 10px; color: var(--dorado); letter-spacing: 1px; }
 
   .btn-logout {
     background: transparent;
-    border: 1px solid #444;
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 8px;
-    padding: 8px 16px;
-    color: #888;
-    font-size: 13px;
+    padding: 8px 14px;
+    color: var(--texto-gris);
+    font-size: 12px;
     cursor: pointer;
+    font-family: 'Inter', sans-serif;
     transition: all 0.2s;
   }
 
-  .btn-logout:hover { border-color: var(--rojo); color: var(--rojo); }
+  .btn-logout:hover { color: var(--blanco); border-color: rgba(255,255,255,0.3); }
 
-  /* LAYOUT */
-  .app-layout {
-    display: flex;
+  /* MAIN */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
     min-height: calc(100vh - 64px);
   }
 
   /* SIDEBAR */
   .sidebar {
-    width: 260px;
     background: var(--gris-oscuro);
-    border-right: 1px solid #2a2a2a;
+    border-right: 1px solid rgba(255,255,255,0.06);
     padding: 24px 0;
-    flex-shrink: 0;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
   }
 
-  .sidebar-section {
-    padding: 0 16px;
-    margin-bottom: 8px;
-  }
-
-  .sidebar-label {
+  .sidebar-section-title {
     font-size: 10px;
-    color: #555;
-    letter-spacing: 3px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--texto-gris);
     text-transform: uppercase;
-    padding: 0 8px;
-    margin-bottom: 8px;
-    font-weight: 600;
+    padding: 0 20px 12px;
   }
 
-  .sidebar-item {
+  .nav-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
-    border-radius: 10px;
+    padding: 12px 20px;
     cursor: pointer;
     transition: all 0.2s;
+    border-left: 3px solid transparent;
+    color: #aaaaaa;
     font-size: 14px;
-    color: #aaa;
-    margin-bottom: 2px;
-    border: 1px solid transparent;
+    font-weight: 500;
   }
 
-  .sidebar-item:hover {
-    background: var(--gris-medio);
-    color: var(--blanco);
-    border-color: #333;
-  }
-
-  .sidebar-item.active {
-    background: linear-gradient(135deg, rgba(204,27,27,0.2), rgba(0,61,165,0.1));
-    border-color: var(--rojo);
+  .nav-item:hover {
+    background: rgba(255,255,255,0.04);
     color: var(--blanco);
   }
 
-  .sidebar-item .icon { font-size: 18px; width: 24px; text-align: center; }
-
-  .sidebar-divider {
-    border: none;
-    border-top: 1px solid #2a2a2a;
-    margin: 16px;
+  .nav-item.active {
+    border-left-color: var(--rojo);
+    background: rgba(211,47,47,0.08);
+    color: var(--blanco);
   }
 
-  /* MAIN */
-  .main-content {
-    flex: 1;
+  .nav-item .nav-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+  }
+
+  .nav-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 16px 0;
+  }
+
+  /* CONTENT */
+  .content {
     padding: 32px;
+    background: #111111;
     overflow-y: auto;
-    background: #111;
   }
 
-  /* PAGE HEADER */
-  .page-header {
+  /* VIEWS */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* HOME */
+  .home-hero {
+    background: linear-gradient(135deg, var(--gris-medio) 0%, #1a0a0a 100%);
+    border: 1px solid rgba(211,47,47,0.2);
+    border-radius: 16px;
+    padding: 40px;
     margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .page-header h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
+  .home-hero::before {
+    content: 'GLOBAL';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 160px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .home-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
     color: var(--blanco);
-    letter-spacing: 1px;
+    margin-bottom: 8px;
   }
 
-  .page-header h1 span { color: var(--rojo); }
+  .home-hero h1 span { color: var(--dorado); }
 
-  .page-header p {
-    color: #777;
-    font-size: 14px;
-    margin-top: 6px;
+  .home-hero p {
+    color: var(--texto-gris);
+    font-size: 15px;
+    max-width: 500px;
+    line-height: 1.6;
   }
 
-  /* STATS */
-  .stats-grid {
+  .stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
@@ -376,14 +379,61 @@
 
   .stat-card {
     background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: 12px;
     padding: 20px;
+    text-align: center;
+  }
+
+  .stat-card .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 1px;
+    color: var(--dorado);
+  }
+
+  .stat-card .stat-label {
+    font-size: 11px;
+    color: var(--texto-gris);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* CATEGORY CARDS */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--blanco);
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .category-card {
+    background: var(--gris-oscuro);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.25s;
     position: relative;
     overflow: hidden;
   }
 
-  .stat-card::before {
+  .category-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -392,540 +442,498 @@
     height: 3px;
   }
 
-  .stat-card.red::before { background: var(--rojo); }
-  .stat-card.blue::before { background: var(--azul); }
-  .stat-card.gold::before { background: var(--dorado); }
-  .stat-card.green::before { background: #22c55e; }
-
-  .stat-icon { font-size: 28px; margin-bottom: 12px; }
-  .stat-num {
-    font-family: 'Oswald', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--blanco);
-    line-height: 1;
-  }
-
-  .stat-label { font-size: 12px; color: #666; margin-top: 4px; letter-spacing: 1px; }
-
-  /* CATEGORIES */
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .category-card {
-    background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
+  .category-card.cat-boletos::before { background: var(--rojo); }
+  .category-card.cat-remesas::before { background: var(--dorado); }
+  .category-card.cat-recargas::before { background: var(--azul); }
+  .category-card.cat-general::before { background: #666; }
 
   .category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    border-color: var(--rojo);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
   }
 
-  .category-header {
-    padding: 24px;
+  .cat-icon { font-size: 32px; margin-bottom: 12px; }
+  .cat-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .cat-desc { font-size: 13px; color: var(--texto-gris); line-height: 1.5; }
+  .cat-count {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--texto-gris);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cat-count strong { color: var(--dorado); }
+
+  /* PROCEDIMIENTOS LIST */
+  .proc-header {
     display: flex;
     align-items: center;
     gap: 16px;
-  }
-
-  .category-icon-wrap {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-
-  .cat-red { background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro)); }
-  .cat-blue { background: linear-gradient(135deg, var(--azul), var(--azul-oscuro)); }
-  .cat-gold { background: linear-gradient(135deg, #c9a400, #8a7000); }
-  .cat-green { background: linear-gradient(135deg, #16a34a, #0d6b31); }
-
-  .category-info h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--blanco);
-    letter-spacing: 0.5px;
-  }
-
-  .category-info p { font-size: 12px; color: #666; margin-top: 4px; }
-
-  .category-footer {
-    padding: 12px 24px;
-    background: rgba(255,255,255,0.03);
-    border-top: 1px solid #2a2a2a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .cat-count { font-size: 12px; color: #777; }
-  .cat-arrow { color: var(--rojo); font-size: 18px; }
-
-  /* PROCEDIMIENTOS LIST */
-  .procedures-list { display: flex; flex-direction: column; gap: 16px; }
-
-  .proc-card {
-    background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .proc-card:hover { border-color: #444; }
-
-  .proc-header {
-    padding: 20px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-
-  .proc-title-wrap { display: flex; align-items: center; gap: 14px; }
-
-  .proc-type-badge {
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
-  .badge-video { background: rgba(204,27,27,0.2); color: #ff6b6b; border: 1px solid rgba(204,27,27,0.3); }
-  .badge-texto { background: rgba(0,61,165,0.2); color: #7ba7ff; border: 1px solid rgba(0,61,165,0.3); }
-  .badge-ambos { background: rgba(245,197,24,0.15); color: var(--dorado); border: 1px solid rgba(245,197,24,0.3); }
-
-  .proc-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--blanco);
-  }
-
-  .proc-desc { font-size: 13px; color: #666; margin-top: 4px; }
-
-  .proc-expand-btn {
-    background: transparent;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 8px 14px;
-    color: #888;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-
-  .proc-expand-btn:hover { border-color: var(--rojo); color: var(--rojo); }
-
-  .proc-body {
-    padding: 0 24px 24px;
-    border-top: 1px solid #222;
-    display: none;
-  }
-
-  .proc-body.open { display: block; }
-
-  .proc-video-wrap {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 20px;
-    background: #000;
-  }
-
-  .proc-video-wrap iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-  }
-
-  .proc-text-content {
-    margin-top: 20px;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: #ccc;
-    white-space: pre-wrap;
-  }
-
-  /* BREADCRUMB */
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    color: #666;
-  }
-
-  .breadcrumb span { cursor: pointer; }
-  .breadcrumb span:hover { color: var(--rojo); }
-  .breadcrumb .sep { color: #333; }
-  .breadcrumb .current { color: var(--blanco); }
-
-  /* ADMIN PANEL */
-  .admin-tabs {
-    display: flex;
-    gap: 4px;
-    background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 6px;
     margin-bottom: 28px;
-    width: fit-content;
   }
 
-  .admin-tab {
-    padding: 10px 20px;
+  .btn-back {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px;
+    padding: 8px 16px;
+    color: var(--texto-gris);
     font-size: 13px;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    color: #666;
-    border: none;
-    background: transparent;
-    letter-spacing: 0.5px;
-  }
-
-  .admin-tab.active {
-    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
-    color: var(--blanco);
-    box-shadow: 0 4px 12px rgba(204,27,27,0.3);
-  }
-
-  .admin-tab:hover:not(.active) { color: var(--blanco); background: #2a2a2a; }
-
-  /* FORM */
-  .form-card {
-    background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
-    border-radius: 14px;
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-
-  .form-card h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    color: var(--blanco);
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #2a2a2a;
-    letter-spacing: 1px;
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-row.single { grid-template-columns: 1fr; }
-
-  .form-field { margin-bottom: 20px; }
-
-  .form-field label {
-    display: block;
-    font-size: 11px;
-    color: var(--dorado);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
-
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    width: 100%;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: var(--blanco);
-    font-size: 14px;
     font-family: 'Inter', sans-serif;
-    transition: border-color 0.2s;
-    outline: none;
-    resize: vertical;
-  }
-
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus {
-    border-color: var(--rojo);
-    box-shadow: 0 0 0 3px rgba(204,27,27,0.1);
-  }
-
-  .form-field select option { background: #1a1a1a; }
-
-  .btn-primary {
-    background: linear-gradient(135deg, var(--rojo), var(--rojo-oscuro));
-    border: none;
-    border-radius: 8px;
-    padding: 14px 28px;
-    color: var(--blanco);
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
     transition: all 0.2s;
   }
 
-  .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(204,27,27,0.4);
-  }
+  .btn-back:hover { color: var(--blanco); }
 
-  .btn-secondary {
-    background: transparent;
-    border: 1px solid var(--azul);
-    border-radius: 8px;
-    padding: 14px 28px;
-    color: #7ba7ff;
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .btn-secondary:hover { background: rgba(0,61,165,0.15); }
-
-  .btn-danger {
-    background: transparent;
-    border: 1px solid #555;
-    border-radius: 6px;
-    padding: 6px 12px;
-    color: #888;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .btn-danger:hover { border-color: var(--rojo); color: var(--rojo); }
-
-  /* TABLE */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-
-  .data-table th {
-    background: #1a1a1a;
-    color: var(--dorado);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 14px 16px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid var(--rojo);
-  }
-
-  .data-table td {
-    padding: 14px 16px;
-    border-bottom: 1px solid #222;
-    color: #ccc;
-    vertical-align: middle;
-  }
-
-  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-  /* SEARCH */
   .search-bar {
     display: flex;
-    align-items: center;
     gap: 12px;
-    background: var(--gris-oscuro);
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 12px 18px;
     margin-bottom: 24px;
   }
 
   .search-bar input {
     flex: 1;
-    background: transparent;
-    border: none;
-    color: var(--blanco);
-    font-size: 15px;
-    font-family: 'Inter', sans-serif;
-    outline: none;
-  }
-
-  .search-bar input::placeholder { color: #555; }
-  .search-icon { color: #555; font-size: 18px; }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
     background: var(--gris-oscuro);
-    border: 1px solid var(--rojo);
-    border-radius: 10px;
-    padding: 16px 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 16px;
     color: var(--blanco);
     font-size: 14px;
-    z-index: 999;
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.3s;
-    max-width: 360px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.2s;
   }
 
-  .toast.show { transform: translateY(0); opacity: 1; }
-  .toast.success { border-color: #22c55e; }
-  .toast.error { border-color: var(--rojo); }
+  .search-bar input:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 3px rgba(211,47,47,0.1);
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--texto-gris);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .filter-tab.active, .filter-tab:hover {
+    background: var(--rojo);
+    border-color: var(--rojo);
+    color: white;
+  }
+
+  .proc-list { display: flex; flex-direction: column; gap: 12px; }
+
+  .proc-card {
+    background: var(--gris-oscuro);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .proc-card:hover {
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+
+  .proc-card-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .proc-type-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .proc-type-badge.video { background: rgba(211,47,47,0.2); color: #ff6b6b; }
+  .proc-type-badge.texto { background: rgba(21,101,192,0.2); color: #64b5f6; }
+  .proc-type-badge.mixto { background: rgba(249,168,37,0.2); color: var(--dorado); }
+
+  .proc-info { flex: 1; }
+  .proc-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .proc-meta { font-size: 12px; color: var(--texto-gris); display: flex; gap: 12px; }
+
+  .proc-arrow {
+    color: var(--texto-gris);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+
+  .proc-card.expanded .proc-arrow { transform: rotate(90deg); }
+
+  .proc-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px;
+  }
+
+  .proc-card.expanded .proc-body { display: block; }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #000;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .proc-description {
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .proc-steps {
+    margin-top: 16px;
+    counter-reset: steps;
+  }
+
+  .proc-step {
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .proc-step:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--rojo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text {
+    font-size: 14px;
+    color: #cccccc;
+    line-height: 1.6;
+  }
 
   /* EMPTY STATE */
   .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #444;
+    color: var(--texto-gris);
   }
 
-  .empty-state .empty-icon { font-size: 64px; margin-bottom: 16px; }
-  .empty-state h3 { font-family: 'Oswald', sans-serif; font-size: 22px; color: #555; margin-bottom: 8px; }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty-state h3 { font-size: 18px; color: var(--blanco); margin-bottom: 8px; }
   .empty-state p { font-size: 14px; }
 
-  /* USERS TABLE */
-  .user-status {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-
-  .status-active { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
-  .status-inactive { background: rgba(100,100,100,0.15); color: #666; border: 1px solid #333; }
-
-  /* MODAL */
-  .modal-overlay {
+  /* ===== ADMIN PANEL ===== */
+  #admin-panel {
+    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    display: none;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 40px 20px;
   }
 
-  .modal-overlay.open { display: flex; }
-
-  .modal {
+  .admin-modal {
     background: var(--gris-oscuro);
-    border: 1px solid #333;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
-    width: 100%;
-    max-width: 500px;
-    padding: 32px;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
-  .modal h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    color: var(--blanco);
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-  }
-
-  .modal-actions { display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end; }
-
-  .section { display: none; }
-  .section.active { display: block; }
-
-  .welcome-banner {
-    background: linear-gradient(135deg, rgba(204,27,27,0.15), rgba(0,61,165,0.15));
-    border: 1px solid rgba(204,27,27,0.3);
-    border-radius: 14px;
-    padding: 24px 28px;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .welcome-icon { font-size: 40px; }
-
-  .welcome-text h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
-    color: var(--blanco);
-    letter-spacing: 1px;
-  }
-
-  .welcome-text p { font-size: 13px; color: #888; margin-top: 4px; }
-
-  /* CATEGORIES ADMIN */
-  .cat-admin-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .cat-admin-card {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 16px 20px;
+  .admin-modal-header {
+    background: linear-gradient(135deg, var(--rojo-dark), var(--azul-dark));
+    padding: 24px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .cat-admin-info { display: flex; align-items: center; gap: 12px; }
-  .cat-admin-icon { font-size: 24px; }
-  .cat-admin-name { font-size: 15px; font-weight: 600; color: var(--blanco); }
-  .cat-admin-count { font-size: 12px; color: #555; margin-top: 2px; }
+  .admin-modal-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
 
-  .btn-add-cat {
-    background: linear-gradient(135deg, var(--azul), var(--azul-oscuro));
+  .btn-close-admin {
+    background: rgba(255,255,255,0.1);
     border: none;
     border-radius: 8px;
-    padding: 12px 20px;
+    width: 36px;
+    height: 36px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .admin-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .admin-tab {
+    flex: 1;
+    padding: 16px;
+    background: transparent;
+    border: none;
+    color: var(--texto-gris);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .admin-tab.active {
+    color: var(--dorado);
+    border-bottom-color: var(--dorado);
+  }
+
+  .admin-content { padding: 32px; }
+
+  .admin-tab-content { display: none; }
+  .admin-tab-content.active { display: block; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .admin-form .form-group { margin-bottom: 20px; }
+
+  .admin-form select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--blanco);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .admin-form select option { background: var(--gris-oscuro); }
+
+  .admin-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 14px 16px;
     color: var(--blanco);
     font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: all 0.2s;
+  }
+
+  .admin-form textarea:focus,
+  .admin-form select:focus {
+    border-color: var(--dorado);
+    box-shadow: 0 0 0 3px rgba(249,168,37,0.1);
+  }
+
+  .btn-save {
+    width: 100%;
+    background: linear-gradient(135deg, var(--dorado), var(--dorado-dark));
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    color: var(--negro);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-save:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .admin-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .admin-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .admin-item-info { flex: 1; }
+  .admin-item-title { font-size: 14px; font-weight: 600; }
+  .admin-item-meta { font-size: 12px; color: var(--texto-gris); margin-top: 2px; }
+
+  .admin-item-actions { display: flex; gap: 8px; }
+
+  .btn-delete {
+    background: rgba(211,47,47,0.15);
+    border: 1px solid rgba(211,47,47,0.3);
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #ff6b6b;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-delete:hover { background: rgba(211,47,47,0.3); }
+
+  /* CATEGORÍAS ADMIN */
+  .cat-admin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .cat-admin-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cat-admin-info { display: flex; align-items: center; gap: 10px; }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--gris-medio);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--blanco);
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 320px;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-left: 4px solid #4caf50; }
+  .toast.error { border-left: 4px solid var(--rojo); }
+
+  /* LOADING */
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 12px;
+    color: var(--texto-gris);
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-top-color: var(--rojo);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .content { padding: 20px; }
+    .login-card { padding: 32px 24px; }
+    .cat-admin-grid { grid-template-columns: 1fr; }
+  }
+
+  /* USERS ADMIN */
+  .user-form-grid { display: grid; gap: 16px; }
+  .role-selector { display: flex; gap: 12px; }
+  .role-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: var(--texto-gris);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-
-  .btn-add-cat:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,61,165,0.4); }
-
-  @media (max-width: 768px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .sidebar { display: none; }
-    .form-row { grid-template-columns: 1fr; }
-  }
+  .role-btn.active { border-color: var(--dorado); color: var(--dorado); background: rgba(249,168,37,0.08); }
 </style>
 </head>
 <body>
@@ -934,23 +942,21 @@
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">
-      <div class="brand-name">GLO<span>BAL</span></div>
+      <div class="brand-name">GLOBAL</div>
       <div class="brand-sub">Soluciones Financieras</div>
-      <div class="brand-tag">Boletos · Remesas · Recargas</div>
     </div>
     <div class="login-divider"></div>
-    <div class="login-title">PORTAL DE CAPACITACIÓN</div>
-
+    <div class="login-title">Acceso al Portal de Procedimientos</div>
     <div class="form-group">
-      <label>Usuario</label>
-      <input type="text" id="login-user" placeholder="tu.usuario" autocomplete="off">
+      <label>Correo electrónico</label>
+      <input type="email" id="login-email" placeholder="tu@email.com">
     </div>
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" id="login-pass" placeholder="••••••••">
+      <input type="password" id="login-password" placeholder="••••••••" onkeydown="if(event.key==='Enter') doLogin()">
     </div>
-    <button class="btn-login" onclick="doLogin()">INGRESAR AL PORTAL</button>
-    <div class="login-error" id="login-error">Usuario o contraseña incorrectos</div>
+    <button class="btn-login" onclick="doLogin()">INGRESAR</button>
+    <div class="login-error" id="login-error">Correo o contraseña incorrectos.</div>
   </div>
 </div>
 
@@ -958,300 +964,260 @@
 <div id="app">
   <!-- HEADER -->
   <header class="header">
-    <div class="header-brand">
-      <div class="header-logo">GLO<span>BAL</span></div>
-      <div class="header-badge">PROCEDIMIENTOS</div>
-    </div>
+    <div class="header-brand">GLOBAL</div>
     <div class="header-right">
-      <div class="user-pill">
-        <div class="user-avatar" id="header-avatar">G</div>
-        <div>
-          <div class="user-name" id="header-username">Usuario</div>
-          <div class="user-role" id="header-role">EMPLEADO</div>
-        </div>
-      </div>
+      <button class="btn-admin-toggle" id="btn-admin-toggle" onclick="openAdmin()">⚙ ADMIN</button>
+      <div class="user-badge">👤 <span id="user-name-display">Empleado</span></div>
       <button class="btn-logout" onclick="doLogout()">Salir</button>
     </div>
   </header>
 
-  <div class="app-layout">
+  <div class="main-layout">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-label">Principal</div>
-        <div class="sidebar-item active" onclick="showSection('home')" id="nav-home">
-          <span class="icon">🏠</span> Inicio
-        </div>
-        <div class="sidebar-item" onclick="showSection('procedures')" id="nav-procedures">
-          <span class="icon">📋</span> Procedimientos
-        </div>
+    <nav class="sidebar">
+      <div class="sidebar-section-title">Navegación</div>
+      <div class="nav-item active" onclick="showView('home')" id="nav-home">
+        <span class="nav-icon">🏠</span> Inicio
       </div>
-
-      <hr class="sidebar-divider">
-
-      <div class="sidebar-section">
-        <div class="sidebar-label">Categorías</div>
-        <div id="sidebar-categories"></div>
+      <div class="nav-divider"></div>
+      <div class="sidebar-section-title">Servicios</div>
+      <div class="nav-item" onclick="showCategory('boletos')" id="nav-boletos">
+        <span class="nav-icon">✈️</span> Boletos Aéreos
       </div>
-
-      <div id="admin-nav" style="display:none">
-        <hr class="sidebar-divider">
-        <div class="sidebar-section">
-          <div class="sidebar-label">Administración</div>
-          <div class="sidebar-item" onclick="showSection('admin')" id="nav-admin">
-            <span class="icon">⚙️</span> Panel Admin
-          </div>
-        </div>
+      <div class="nav-item" onclick="showCategory('remesas')" id="nav-remesas">
+        <span class="nav-icon">💸</span> Remesas
       </div>
-    </aside>
+      <div class="nav-item" onclick="showCategory('recargas')" id="nav-recargas">
+        <span class="nav-icon">📱</span> Recargas
+      </div>
+      <div class="nav-item" onclick="showCategory('general')" id="nav-general">
+        <span class="nav-icon">📋</span> General
+      </div>
+      <div class="nav-divider"></div>
+      <div id="extra-cats-nav"></div>
+    </nav>
 
-    <!-- MAIN -->
-    <main class="main-content">
-
+    <!-- CONTENT -->
+    <main class="content">
       <!-- HOME -->
-      <div id="section-home" class="section active">
-        <div class="welcome-banner">
-          <div class="welcome-icon">🌍</div>
-          <div class="welcome-text">
-            <h2>Bienvenido al Portal Global</h2>
-            <p>Aquí encontrarás todos los procedimientos y guías de la empresa</p>
-          </div>
+      <div class="view active" id="view-home">
+        <div class="home-hero">
+          <h1>Base de <span>Procedimientos</span></h1>
+          <p>Todo lo que necesitas saber para operar con excelencia. Boletos, remesas, recargas y más — en un solo lugar.</p>
         </div>
-
-        <div class="stats-grid" id="home-stats">
-          <div class="stat-card red">
-            <div class="stat-icon">📋</div>
+        <div class="stats-row">
+          <div class="stat-card">
             <div class="stat-num" id="stat-total">0</div>
             <div class="stat-label">Procedimientos</div>
           </div>
-          <div class="stat-card blue">
-            <div class="stat-icon">🎬</div>
+          <div class="stat-card">
             <div class="stat-num" id="stat-videos">0</div>
-            <div class="stat-label">Con Video</div>
+            <div class="stat-label">Videos</div>
           </div>
-          <div class="stat-card gold">
-            <div class="stat-icon">📁</div>
-            <div class="stat-num" id="stat-cats">0</div>
+          <div class="stat-card">
+            <div class="stat-num" id="stat-cats">4</div>
             <div class="stat-label">Categorías</div>
           </div>
-          <div class="stat-card green">
-            <div class="stat-icon">👥</div>
+          <div class="stat-card">
             <div class="stat-num" id="stat-users">0</div>
             <div class="stat-label">Empleados</div>
           </div>
         </div>
-
-        <div class="page-header">
-          <h1>Categorías <span>disponibles</span></h1>
-          <p>Selecciona una categoría para ver los procedimientos</p>
+        <div class="section-header">
+          <div class="section-title">CATEGORÍAS</div>
         </div>
-
-        <div class="categories-grid" id="home-categories"></div>
+        <div class="category-grid" id="category-grid">
+          <div class="category-card cat-boletos" onclick="showCategory('boletos')">
+            <div class="cat-icon">✈️</div>
+            <div class="cat-name">Boletos Aéreos</div>
+            <div class="cat-desc">Cotización, emisión, cambios y cancelaciones de vuelos hacia Cuba y destinos internacionales.</div>
+            <div class="cat-count">📄 <strong id="count-boletos">0</strong> procedimientos</div>
+          </div>
+          <div class="category-card cat-remesas" onclick="showCategory('remesas')">
+            <div class="cat-icon">💸</div>
+            <div class="cat-name">Remesas</div>
+            <div class="cat-desc">Envío de dinero, verificación de beneficiarios, límites y procesamiento de transferencias.</div>
+            <div class="cat-count">📄 <strong id="count-remesas">0</strong> procedimientos</div>
+          </div>
+          <div class="category-card cat-recargas" onclick="showCategory('recargas')">
+            <div class="cat-icon">📱</div>
+            <div class="cat-name">Recargas</div>
+            <div class="cat-desc">Recargas internacionales de telefonía, nauta y otros servicios digitales para Cuba.</div>
+            <div class="cat-count">📄 <strong id="count-recargas">0</strong> procedimientos</div>
+          </div>
+          <div class="category-card cat-general" onclick="showCategory('general')">
+            <div class="cat-icon">📋</div>
+            <div class="cat-name">General</div>
+            <div class="cat-desc">Políticas de la empresa, atención al cliente, manejo de reclamos y procedimientos internos.</div>
+            <div class="cat-count">📄 <strong id="count-general">0</strong> procedimientos</div>
+          </div>
+        </div>
+        <div id="extra-cat-cards"></div>
       </div>
 
-      <!-- PROCEDURES -->
-      <div id="section-procedures" class="section">
-        <div class="breadcrumb">
-          <span onclick="showSection('home')">🏠 Inicio</span>
-          <span class="sep">›</span>
-          <span id="bc-category" class="current">Procedimientos</span>
+      <!-- PROCEDIMIENTOS VIEW -->
+      <div class="view" id="view-procs">
+        <div class="proc-header">
+          <button class="btn-back" onclick="showView('home')">← Volver</button>
+          <h2 style="font-family:'Bebas Neue';font-size:28px;letter-spacing:2px;" id="proc-view-title">Procedimientos</h2>
         </div>
-
-        <div class="page-header">
-          <h1 id="proc-title">Todos los <span>Procedimientos</span></h1>
-          <p id="proc-subtitle">Base de conocimiento Global Soluciones</p>
-        </div>
-
         <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Buscar procedimiento..." id="search-input" oninput="filterProcedures()">
+          <input type="text" id="search-input" placeholder="🔍 Buscar procedimiento..." oninput="filterProcs()">
         </div>
-
-        <div class="procedures-list" id="procedures-list"></div>
-      </div>
-
-      <!-- ADMIN -->
-      <div id="section-admin" class="section">
-        <div class="page-header">
-          <h1>Panel de <span>Administración</span></h1>
-          <p>Gestiona procedimientos, categorías y usuarios</p>
+        <div class="filter-tabs" id="filter-tabs">
+          <button class="filter-tab active" onclick="setFilter('todos',this)">Todos</button>
+          <button class="filter-tab" onclick="setFilter('video',this)">📹 Videos</button>
+          <button class="filter-tab" onclick="setFilter('texto',this)">📄 Escritos</button>
+          <button class="filter-tab" onclick="setFilter('mixto',this)">🔀 Mixtos</button>
         </div>
-
-        <div class="admin-tabs">
-          <button class="admin-tab active" onclick="switchAdminTab('procedures')">📋 Procedimientos</button>
-          <button class="admin-tab" onclick="switchAdminTab('categories')">📁 Categorías</button>
-          <button class="admin-tab" onclick="switchAdminTab('users')">👥 Usuarios</button>
+        <div class="proc-list" id="proc-list">
+          <div class="loading"><div class="spinner"></div> Cargando...</div>
         </div>
-
-        <!-- ADMIN: PROCEDURES -->
-        <div id="admin-procedures">
-          <div class="form-card">
-            <h3 id="form-proc-title">➕ NUEVO PROCEDIMIENTO</h3>
-            <input type="hidden" id="edit-proc-id">
-
-            <div class="form-row">
-              <div class="form-field">
-                <label>Título del Procedimiento</label>
-                <input type="text" id="proc-titulo" placeholder="Ej: Cómo procesar una remesa">
-              </div>
-              <div class="form-field">
-                <label>Categoría</label>
-                <select id="proc-categoria">
-                  <option value="">Seleccionar categoría</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row single">
-              <div class="form-field">
-                <label>Descripción corta</label>
-                <input type="text" id="proc-descripcion" placeholder="Breve descripción del procedimiento">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-field">
-                <label>Tipo de contenido</label>
-                <select id="proc-tipo" onchange="toggleContentFields()">
-                  <option value="texto">Solo Texto</option>
-                  <option value="video">Solo Video</option>
-                  <option value="ambos">Texto + Video</option>
-                </select>
-              </div>
-              <div class="form-field" id="field-video-url">
-                <label>URL del Video (YouTube)</label>
-                <input type="text" id="proc-video-url" placeholder="https://youtube.com/watch?v=...">
-              </div>
-            </div>
-
-            <div class="form-row single" id="field-texto">
-              <div class="form-field">
-                <label>Contenido / Procedimiento</label>
-                <textarea id="proc-contenido" rows="8" placeholder="Escribe el procedimiento paso a paso..."></textarea>
-              </div>
-            </div>
-
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <button class="btn-primary" onclick="saveProcedure()">💾 GUARDAR PROCEDIMIENTO</button>
-              <button class="btn-secondary" onclick="clearProcForm()">✕ CANCELAR</button>
-            </div>
-          </div>
-
-          <div class="form-card">
-            <h3>📋 PROCEDIMIENTOS EXISTENTES</h3>
-            <div class="search-bar" style="margin-bottom:16px;">
-              <span class="search-icon">🔍</span>
-              <input type="text" placeholder="Buscar..." id="admin-search" oninput="renderAdminTable()">
-            </div>
-            <div style="overflow-x:auto;">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Procedimiento</th>
-                    <th>Categoría</th>
-                    <th>Tipo</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="admin-proc-tbody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- ADMIN: CATEGORIES -->
-        <div id="admin-categories" style="display:none;">
-          <div class="form-card">
-            <h3>➕ NUEVA CATEGORÍA</h3>
-            <input type="hidden" id="edit-cat-id">
-            <div class="form-row">
-              <div class="form-field">
-                <label>Nombre de la Categoría</label>
-                <input type="text" id="cat-nombre" placeholder="Ej: Boletos Aéreos">
-              </div>
-              <div class="form-field">
-                <label>Ícono (emoji)</label>
-                <input type="text" id="cat-icono" placeholder="✈️" maxlength="4">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label>Descripción</label>
-                <input type="text" id="cat-descripcion" placeholder="Breve descripción">
-              </div>
-              <div class="form-field">
-                <label>Color</label>
-                <select id="cat-color">
-                  <option value="red">Rojo</option>
-                  <option value="blue">Azul</option>
-                  <option value="gold">Dorado</option>
-                  <option value="green">Verde</option>
-                </select>
-              </div>
-            </div>
-            <div style="display:flex; gap:12px;">
-              <button class="btn-primary" onclick="saveCategory()">💾 GUARDAR CATEGORÍA</button>
-              <button class="btn-secondary" onclick="clearCatForm()">✕ CANCELAR</button>
-            </div>
-          </div>
-
-          <div class="form-card">
-            <h3>📁 CATEGORÍAS EXISTENTES</h3>
-            <div class="cat-admin-grid" id="cat-admin-list"></div>
-          </div>
-        </div>
-
-        <!-- ADMIN: USERS -->
-        <div id="admin-users" style="display:none;">
-          <div class="form-card">
-            <h3>➕ NUEVO USUARIO</h3>
-            <div class="form-row">
-              <div class="form-field">
-                <label>Nombre completo</label>
-                <input type="text" id="user-nombre" placeholder="Nombre del empleado">
-              </div>
-              <div class="form-field">
-                <label>Usuario</label>
-                <input type="text" id="user-username" placeholder="usuario.login">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label>Contraseña</label>
-                <input type="password" id="user-password" placeholder="••••••••">
-              </div>
-              <div class="form-field">
-                <label>Rol</label>
-                <select id="user-rol">
-                  <option value="empleado">Empleado</option>
-                  <option value="admin">Administrador</option>
-                </select>
-              </div>
-            </div>
-            <button class="btn-primary" onclick="saveUser()">💾 CREAR USUARIO</button>
-          </div>
-
-          <div class="form-card">
-            <h3>👥 USUARIOS DEL SISTEMA</h3>
-            <div style="overflow-x:auto;">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Usuario</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="users-tbody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
       </div>
     </main>
+  </div>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="admin-panel">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <h2>⚙ PANEL DE ADMINISTRACIÓN</h2>
+      <button class="btn-close-admin" onclick="closeAdmin()">✕</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('proc')">📋 Procedimientos</button>
+      <button class="admin-tab" onclick="switchAdminTab('cats')">🗂 Categorías</button>
+      <button class="admin-tab" onclick="switchAdminTab('users')">👥 Empleados</button>
+    </div>
+    <div class="admin-content">
+
+      <!-- TAB: PROCEDIMIENTOS -->
+      <div class="admin-tab-content active" id="tab-proc">
+        <div class="admin-form">
+          <div class="form-group">
+            <label>Título del procedimiento</label>
+            <input type="text" id="proc-title" placeholder="Ej: Cómo emitir un boleto de emergencia">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Categoría</label>
+              <select id="proc-cat">
+                <option value="boletos">✈️ Boletos Aéreos</option>
+                <option value="remesas">💸 Remesas</option>
+                <option value="recargas">📱 Recargas</option>
+                <option value="general">📋 General</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tipo de contenido</label>
+              <select id="proc-type" onchange="toggleVideoField()">
+                <option value="texto">📄 Texto / Escrito</option>
+                <option value="video">📹 Video</option>
+                <option value="mixto">🔀 Video + Texto</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" id="video-url-group" style="display:none;">
+            <label>URL del video (YouTube)</label>
+            <input type="text" id="proc-video-url" placeholder="https://www.youtube.com/watch?v=...">
+          </div>
+          <div class="form-group">
+            <label>Descripción / Introducción</label>
+            <textarea id="proc-desc" placeholder="Describe brevemente de qué trata este procedimiento..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Pasos del procedimiento (uno por línea)</label>
+            <textarea id="proc-steps" rows="6" placeholder="Abrir el sistema de reservas&#10;Ingresar los datos del pasajero&#10;Verificar disponibilidad&#10;Confirmar pago..."></textarea>
+          </div>
+          <button class="btn-save" onclick="saveProc()">💾 GUARDAR PROCEDIMIENTO</button>
+        </div>
+
+        <div style="margin-top:32px;">
+          <div class="section-title" style="font-size:18px;margin-bottom:16px;">PROCEDIMIENTOS EXISTENTES</div>
+          <div id="admin-proc-list"><div class="loading"><div class="spinner"></div> Cargando...</div></div>
+        </div>
+      </div>
+
+      <!-- TAB: CATEGORÍAS -->
+      <div class="admin-tab-content" id="tab-cats">
+        <div class="cat-admin-grid" id="cat-admin-grid">
+          <div class="cat-admin-card">
+            <div class="cat-admin-info"><span>✈️</span> <span>Boletos Aéreos</span></div>
+            <span style="font-size:11px;color:var(--texto-gris);">Base</span>
+          </div>
+          <div class="cat-admin-card">
+            <div class="cat-admin-info"><span>💸</span> <span>Remesas</span></div>
+            <span style="font-size:11px;color:var(--texto-gris);">Base</span>
+          </div>
+          <div class="cat-admin-card">
+            <div class="cat-admin-info"><span>📱</span> <span>Recargas</span></div>
+            <span style="font-size:11px;color:var(--texto-gris);">Base</span>
+          </div>
+          <div class="cat-admin-card">
+            <div class="cat-admin-info"><span>📋</span> <span>General</span></div>
+            <span style="font-size:11px;color:var(--texto-gris);">Base</span>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;padding:16px;background:rgba(249,168,37,0.05);border:1px solid rgba(249,168,37,0.2);border-radius:10px;font-size:13px;color:#ccc;">
+          💡 Las 4 categorías base no se pueden eliminar. Puedes agregar categorías personalizadas.
+        </div>
+        <div class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre de la nueva categoría</label>
+              <input type="text" id="new-cat-name" placeholder="Ej: Seguros de Viaje">
+            </div>
+            <div class="form-group">
+              <label>Emoji / Ícono</label>
+              <input type="text" id="new-cat-icon" placeholder="🛡️">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descripción breve</label>
+            <input type="text" id="new-cat-desc" placeholder="Descripción de esta categoría">
+          </div>
+          <button class="btn-save" onclick="saveCat()">+ AGREGAR CATEGORÍA</button>
+        </div>
+        <div style="margin-top:24px;">
+          <div class="section-title" style="font-size:16px;margin-bottom:12px;">CATEGORÍAS PERSONALIZADAS</div>
+          <div id="custom-cats-list"></div>
+        </div>
+      </div>
+
+      <!-- TAB: EMPLEADOS -->
+      <div class="admin-tab-content" id="tab-users">
+        <div class="admin-form user-form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" id="user-name" placeholder="Nombre del empleado">
+            </div>
+            <div class="form-group">
+              <label>Correo electrónico</label>
+              <input type="email" id="user-email" placeholder="empleado@global.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contraseña</label>
+            <input type="text" id="user-pass" placeholder="Contraseña temporal">
+          </div>
+          <div class="form-group">
+            <label>Rol</label>
+            <div class="role-selector">
+              <button class="role-btn active" id="role-btn-empleado" onclick="setRole('empleado')">👤 Empleado</button>
+              <button class="role-btn" id="role-btn-admin" onclick="setRole('admin')">⚙️ Admin</button>
+            </div>
+          </div>
+          <button class="btn-save" onclick="saveUser()">+ REGISTRAR EMPLEADO</button>
+        </div>
+        <div style="margin-top:32px;">
+          <div class="section-title" style="font-size:18px;margin-bottom:16px;">EMPLEADOS REGISTRADOS</div>
+          <div id="admin-users-list"><div class="loading"><div class="spinner"></div> Cargando...</div></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -1259,552 +1225,415 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const SUPABASE_URL = 'https://qgczftnuflxvrhlbyelb.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnY3pmdG51Zmx4dnJobGJ5ZWxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExNTUxNjgsImV4cCI6MjA5NjczMTE2OH0.yfySblwq_oIa6oMbdg2O0OXM_TzSmasl4HfSaPVdFw5M';
+  const SUPABASE_URL = 'https://qgczftnuflxvrhlbyelb.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnY3pmdG51Zmx4dnJobGJ5ZWxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExNTUxNjgsImV4cCI6MjA5NjczMTE2OH0.yfySblwq_oIa6oMbdg2O0OXM_TzSmasl4HfSaPVdFw5M';
 
-let currentUser = null;
-let allProcedures = [];
-let allCategories = [];
-let allUsers = [];
-let currentCategoryFilter = null;
+  let currentUser = null;
+  let allProcs = [];
+  let currentCategory = '';
+  let currentFilter = 'todos';
+  let selectedRole = 'empleado';
 
-// ===== SUPABASE HELPERS =====
-function sbFetch(table, options = {}) {
-  let url = `${SUPABASE_URL}/rest/v1/${table}`;
-  const params = [];
-  if (options.select) params.push(`select=${options.select}`);
-  if (options.filter) params.push(options.filter);
-  if (options.order) params.push(`order=${options.order}`);
-  if (params.length) url += '?' + params.join('&');
-
-  return fetch(url, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': options.prefer || 'return=representation'
-    },
-    method: options.method || 'GET',
-    body: options.body ? JSON.stringify(options.body) : undefined
-  }).then(r => r.json());
-}
-
-function sbInsert(table, data) {
-  return fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation'
-    },
-    body: JSON.stringify(data)
-  }).then(r => r.json());
-}
-
-function sbUpdate(table, id, data) {
-  return fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`, {
-    method: 'PATCH',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation'
-    },
-    body: JSON.stringify(data)
-  }).then(r => r.json());
-}
-
-function sbDelete(table, id) {
-  return fetch(`${SUPABASE_URL}/rest/v1/${table}?id=eq.${id}`, {
-    method: 'DELETE',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json'
-    }
-  });
-}
-
-// ===== AUTH =====
-function doLogin() {
-  const username = document.getElementById('login-user').value.trim();
-  const password = document.getElementById('login-pass').value.trim();
-
-  if (!username || !password) { showError('Completa todos los campos'); return; }
-
-  sbFetch('global_users', {
-    filter: `username=eq.${encodeURIComponent(username)}&password=eq.${encodeURIComponent(password)}&activo=eq.true`
-  }).then(data => {
-    if (data && data.length > 0) {
-      currentUser = data[0];
-      localStorage.setItem('global_user', JSON.stringify(currentUser));
-      initApp();
-    } else {
-      showError('Usuario o contraseña incorrectos');
-    }
-  }).catch(() => showError('Error de conexión'));
-}
-
-function showError(msg) {
-  const el = document.getElementById('login-error');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-function doLogout() {
-  currentUser = null;
-  localStorage.removeItem('global_user');
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-user').value = '';
-  document.getElementById('login-pass').value = '';
-  document.getElementById('login-error').style.display = 'none';
-}
-
-document.getElementById('login-pass').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') doLogin();
-});
-
-// ===== INIT =====
-function initApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-
-  document.getElementById('header-username').textContent = currentUser.nombre;
-  document.getElementById('header-avatar').textContent = currentUser.nombre.charAt(0).toUpperCase();
-  document.getElementById('header-role').textContent = currentUser.rol.toUpperCase();
-
-  if (currentUser.rol === 'admin') {
-    document.getElementById('admin-nav').style.display = 'block';
-  }
-
-  loadAll();
-}
-
-function loadAll() {
-  Promise.all([
-    sbFetch('global_categorias', { order: 'orden.asc' }),
-    sbFetch('global_procedimientos', { order: 'created_at.desc' }),
-    sbFetch('global_users', { order: 'nombre.asc' })
-  ]).then(([cats, procs, users]) => {
-    allCategories = cats || [];
-    allProcedures = procs || [];
-    allUsers = users || [];
-    renderAll();
-  });
-}
-
-function renderAll() {
-  renderSidebarCats();
-  renderHomeStats();
-  renderHomeCategories();
-  renderAdminTable();
-  renderCatAdminList();
-  renderUsersTable();
-  populateCatSelect();
-}
-
-// ===== SIDEBAR CATS =====
-function renderSidebarCats() {
-  const container = document.getElementById('sidebar-categories');
-  container.innerHTML = allCategories.map(cat => `
-    <div class="sidebar-item" onclick="filterByCategory(${cat.id}, '${cat.nombre}')" id="nav-cat-${cat.id}">
-      <span class="icon">${cat.icono}</span> ${cat.nombre}
-    </div>
-  `).join('');
-}
-
-// ===== HOME STATS =====
-function renderHomeStats() {
-  document.getElementById('stat-total').textContent = allProcedures.length;
-  document.getElementById('stat-videos').textContent = allProcedures.filter(p => p.tipo === 'video' || p.tipo === 'ambos').length;
-  document.getElementById('stat-cats').textContent = allCategories.length;
-  document.getElementById('stat-users').textContent = allUsers.length;
-}
-
-// ===== HOME CATEGORIES =====
-function renderHomeCategories() {
-  const container = document.getElementById('home-categories');
-  if (allCategories.length === 0) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📁</div><h3>Sin categorías aún</h3><p>El administrador puede agregar categorías desde el panel</p></div>`;
-    return;
-  }
-  container.innerHTML = allCategories.map(cat => {
-    const count = allProcedures.filter(p => p.categoria_id === cat.id).length;
-    return `
-      <div class="category-card" onclick="filterByCategory(${cat.id}, '${cat.nombre}')">
-        <div class="category-header">
-          <div class="category-icon-wrap cat-${cat.color}">${cat.icono}</div>
-          <div class="category-info">
-            <h3>${cat.nombre}</h3>
-            <p>${cat.descripcion || ''}</p>
-          </div>
-        </div>
-        <div class="category-footer">
-          <span class="cat-count">${count} procedimiento${count !== 1 ? 's' : ''}</span>
-          <span class="cat-arrow">→</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-// ===== FILTER BY CATEGORY =====
-function filterByCategory(catId, catName) {
-  currentCategoryFilter = catId;
-  document.getElementById('bc-category').textContent = catName;
-  document.getElementById('proc-title').innerHTML = `${catName} <span>— Procedimientos</span>`;
-  document.getElementById('proc-subtitle').textContent = 'Selecciona un procedimiento para ver los detalles';
-  renderProceduresList(allProcedures.filter(p => p.categoria_id === catId));
-  showSection('procedures');
-}
-
-// ===== PROCEDURES =====
-function filterProcedures() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  const procs = currentCategoryFilter
-    ? allProcedures.filter(p => p.categoria_id === currentCategoryFilter)
-    : allProcedures;
-  renderProceduresList(procs.filter(p =>
-    p.titulo.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q)
-  ));
-}
-
-function renderProceduresList(procs) {
-  const container = document.getElementById('procedures-list');
-  if (procs.length === 0) {
-    container.innerHTML = `<div class="empty-state"><div class="empty-icon">📋</div><h3>Sin procedimientos</h3><p>No se encontraron procedimientos en esta categoría</p></div>`;
-    return;
-  }
-
-  container.innerHTML = procs.map(p => {
-    const badgeClass = p.tipo === 'video' ? 'badge-video' : p.tipo === 'ambos' ? 'badge-ambos' : 'badge-texto';
-    const badgeLabel = p.tipo === 'video' ? '🎬 VIDEO' : p.tipo === 'ambos' ? '📎 TEXTO + VIDEO' : '📄 TEXTO';
-
-    let bodyContent = '';
-    if (p.tipo === 'video' || p.tipo === 'ambos') {
-      const videoId = extractYouTubeId(p.video_url || '');
-      if (videoId) {
-        bodyContent += `<div class="proc-video-wrap"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`;
+  // ===== SUPABASE HELPERS =====
+  function sbFetch(path, opts = {}) {
+    return fetch(SUPABASE_URL + path, {
+      ...opts,
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+        ...(opts.headers || {})
       }
-    }
-    if (p.tipo === 'texto' || p.tipo === 'ambos') {
-      bodyContent += `<div class="proc-text-content">${p.contenido || ''}</div>`;
+    }).then(r => r.json());
+  }
+
+  // ===== AUTH =====
+  function doLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const pass = document.getElementById('login-password').value;
+    const errEl = document.getElementById('login-error');
+    errEl.style.display = 'none';
+
+    if (!email || !pass) { errEl.textContent = 'Completa todos los campos.'; errEl.style.display = 'block'; return; }
+
+    sbFetch('/rest/v1/global_users?email=eq.' + encodeURIComponent(email) + '&select=*')
+      .then(data => {
+        if (!data || !data.length) { errEl.textContent = 'Correo no registrado.'; errEl.style.display = 'block'; return; }
+        const user = data[0];
+        if (user.password !== pass) { errEl.textContent = 'Contraseña incorrecta.'; errEl.style.display = 'block'; return; }
+        currentUser = user;
+        document.getElementById('user-name-display').textContent = user.name;
+        if (user.role === 'admin') document.getElementById('btn-admin-toggle').style.display = 'block';
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        loadStats();
+        loadCategoryCards();
+      })
+      .catch(() => { errEl.textContent = 'Error de conexión.'; errEl.style.display = 'block'; });
+  }
+
+  function doLogout() {
+    currentUser = null;
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('login-password').value = '';
+    document.getElementById('btn-admin-toggle').style.display = 'none';
+  }
+
+  // ===== STATS =====
+  function loadStats() {
+    sbFetch('/rest/v1/global_procedimientos?select=id,tipo').then(data => {
+      if (!data || data.error) return;
+      document.getElementById('stat-total').textContent = data.length;
+      document.getElementById('stat-videos').textContent = data.filter(p => p.tipo === 'video' || p.tipo === 'mixto').length;
+      ['boletos','remesas','recargas','general'].forEach(cat => {
+        const el = document.getElementById('count-' + cat);
+        if (el) el.textContent = data.filter(p => p.categoria === cat).length;
+      });
+    });
+    sbFetch('/rest/v1/global_users?select=id').then(data => {
+      if (data && !data.error) document.getElementById('stat-users').textContent = data.length;
+    });
+    sbFetch('/rest/v1/global_categorias?select=id').then(data => {
+      if (data && !data.error) document.getElementById('stat-cats').textContent = 4 + data.length;
+    });
+  }
+
+  // ===== VIEWS =====
+  function showView(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    const navEl = document.getElementById('nav-' + name);
+    if (navEl) navEl.classList.add('active');
+  }
+
+  function showCategory(cat) {
+    currentCategory = cat;
+    currentFilter = 'todos';
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.filter-tab')[0].classList.add('active');
+
+    const titles = {
+      boletos: '✈️ Boletos Aéreos',
+      remesas: '💸 Remesas',
+      recargas: '📱 Recargas',
+      general: '📋 General'
+    };
+    document.getElementById('proc-view-title').textContent = titles[cat] || cat;
+
+    showView('procs');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + cat);
+    if (navEl) navEl.classList.add('active');
+
+    loadProcs(cat);
+  }
+
+  // ===== LOAD PROCS =====
+  function loadProcs(cat) {
+    const list = document.getElementById('proc-list');
+    list.innerHTML = '<div class="loading"><div class="spinner"></div> Cargando...</div>';
+
+    sbFetch('/rest/v1/global_procedimientos?categoria=eq.' + cat + '&order=created_at.desc&select=*')
+      .then(data => {
+        if (!data || data.error) { list.innerHTML = '<div class="empty-state"><div class="empty-icon">⚠️</div><h3>Error</h3><p>No se pudo cargar.</p></div>'; return; }
+        allProcs = data;
+        renderProcs(data);
+      });
+  }
+
+  function renderProcs(procs) {
+    const list = document.getElementById('proc-list');
+    const search = document.getElementById('search-input').value.toLowerCase();
+    let filtered = procs.filter(p => {
+      const matchText = p.titulo.toLowerCase().includes(search) || (p.descripcion || '').toLowerCase().includes(search);
+      const matchFilter = currentFilter === 'todos' || p.tipo === currentFilter;
+      return matchText && matchFilter;
+    });
+
+    if (!filtered.length) {
+      list.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><h3>Sin resultados</h3><p>No hay procedimientos que coincidan con tu búsqueda.</p></div>';
+      return;
     }
 
-    return `
-      <div class="proc-card">
-        <div class="proc-header" onclick="toggleProc(${p.id})">
-          <div class="proc-title-wrap">
-            <span class="proc-type-badge ${badgeClass}">${badgeLabel}</span>
-            <div>
-              <div class="proc-title">${p.titulo}</div>
-              <div class="proc-desc">${p.descripcion || ''}</div>
+    list.innerHTML = filtered.map(p => `
+      <div class="proc-card" id="pc-${p.id}" onclick="toggleProc('${p.id}')">
+        <div class="proc-card-header">
+          <span class="proc-type-badge ${p.tipo}">${p.tipo === 'video' ? '📹 Video' : p.tipo === 'texto' ? '📄 Escrito' : '🔀 Mixto'}</span>
+          <div class="proc-info">
+            <div class="proc-title">${p.titulo}</div>
+            <div class="proc-meta">
+              <span>📁 ${p.categoria}</span>
             </div>
           </div>
-          <button class="proc-expand-btn" id="btn-${p.id}">﹢</button>
+          <span class="proc-arrow">▶</span>
         </div>
-        <div class="proc-body" id="body-${p.id}">
-          ${bodyContent}
+        <div class="proc-body">
+          ${(p.tipo === 'video' || p.tipo === 'mixto') && p.video_url ? `
+            <div class="video-container">
+              <iframe src="${getYouTubeEmbed(p.video_url)}" allowfullscreen></iframe>
+            </div>` : ''}
+          ${p.descripcion ? `<div class="proc-description">${p.descripcion}</div>` : ''}
+          ${p.pasos ? `
+            <div class="proc-steps">
+              ${p.pasos.split('\n').filter(s => s.trim()).map((s, i) => `
+                <div class="proc-step">
+                  <div class="step-num">${i + 1}</div>
+                  <div class="step-text">${s.trim()}</div>
+                </div>`).join('')}
+            </div>` : ''}
         </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function toggleProc(id) {
-  const body = document.getElementById(`body-${id}`);
-  const btn = document.getElementById(`btn-${id}`);
-  const isOpen = body.classList.contains('open');
-  document.querySelectorAll('.proc-body').forEach(b => b.classList.remove('open'));
-  document.querySelectorAll('.proc-expand-btn').forEach(b => b.textContent = '﹢');
-  if (!isOpen) {
-    body.classList.add('open');
-    btn.textContent = '﹣';
-  }
-}
-
-function extractYouTubeId(url) {
-  const match = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
-  return match ? match[1] : null;
-}
-
-// ===== ADMIN: PROCEDURES =====
-function toggleContentFields() {
-  const tipo = document.getElementById('proc-tipo').value;
-  document.getElementById('field-video-url').style.display = (tipo === 'video' || tipo === 'ambos') ? 'block' : 'none';
-  document.getElementById('field-texto').style.display = (tipo === 'texto' || tipo === 'ambos') ? 'block' : 'none';
-}
-
-function populateCatSelect() {
-  const sel = document.getElementById('proc-categoria');
-  const current = sel.value;
-  sel.innerHTML = '<option value="">Seleccionar categoría</option>' +
-    allCategories.map(c => `<option value="${c.id}" ${c.id == current ? 'selected' : ''}>${c.icono} ${c.nombre}</option>`).join('');
-}
-
-function saveProcedure() {
-  const editId = document.getElementById('edit-proc-id').value;
-  const titulo = document.getElementById('proc-titulo').value.trim();
-  const categoriaId = document.getElementById('proc-categoria').value;
-  const descripcion = document.getElementById('proc-descripcion').value.trim();
-  const tipo = document.getElementById('proc-tipo').value;
-  const videoUrl = document.getElementById('proc-video-url').value.trim();
-  const contenido = document.getElementById('proc-contenido').value.trim();
-
-  if (!titulo || !categoriaId) { showToast('Completa título y categoría', 'error'); return; }
-
-  const data = { titulo, categoria_id: parseInt(categoriaId), descripcion, tipo, video_url: videoUrl, contenido };
-
-  const action = editId
-    ? sbUpdate('global_procedimientos', editId, data)
-    : sbInsert('global_procedimientos', data);
-
-  action.then(() => {
-    showToast(editId ? 'Procedimiento actualizado ✓' : 'Procedimiento creado ✓', 'success');
-    clearProcForm();
-    loadAll();
-  }).catch(() => showToast('Error al guardar', 'error'));
-}
-
-function clearProcForm() {
-  document.getElementById('edit-proc-id').value = '';
-  document.getElementById('proc-titulo').value = '';
-  document.getElementById('proc-categoria').value = '';
-  document.getElementById('proc-descripcion').value = '';
-  document.getElementById('proc-tipo').value = 'texto';
-  document.getElementById('proc-video-url').value = '';
-  document.getElementById('proc-contenido').value = '';
-  document.getElementById('form-proc-title').textContent = '➕ NUEVO PROCEDIMIENTO';
-  toggleContentFields();
-}
-
-function editProcedure(id) {
-  const p = allProcedures.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById('edit-proc-id').value = p.id;
-  document.getElementById('proc-titulo').value = p.titulo;
-  document.getElementById('proc-categoria').value = p.categoria_id;
-  document.getElementById('proc-descripcion').value = p.descripcion || '';
-  document.getElementById('proc-tipo').value = p.tipo;
-  document.getElementById('proc-video-url').value = p.video_url || '';
-  document.getElementById('proc-contenido').value = p.contenido || '';
-  document.getElementById('form-proc-title').textContent = '✏️ EDITAR PROCEDIMIENTO';
-  toggleContentFields();
-  document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth' });
-}
-
-function deleteProcedure(id) {
-  if (!confirm('¿Eliminar este procedimiento?')) return;
-  sbDelete('global_procedimientos', id).then(() => {
-    showToast('Procedimiento eliminado', 'success');
-    loadAll();
-  });
-}
-
-function renderAdminTable() {
-  const q = (document.getElementById('admin-search')?.value || '').toLowerCase();
-  const procs = allProcedures.filter(p => p.titulo.toLowerCase().includes(q));
-  const tbody = document.getElementById('admin-proc-tbody');
-
-  if (procs.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#444;padding:40px">Sin procedimientos</td></tr>`;
-    return;
+      </div>`).join('');
   }
 
-  tbody.innerHTML = procs.map(p => {
-    const cat = allCategories.find(c => c.id === p.categoria_id);
-    const badgeClass = p.tipo === 'video' ? 'badge-video' : p.tipo === 'ambos' ? 'badge-ambos' : 'badge-texto';
-    return `
-      <tr>
-        <td><strong style="color:#fff">${p.titulo}</strong><br><small style="color:#555">${p.descripcion || ''}</small></td>
-        <td>${cat ? cat.icono + ' ' + cat.nombre : '—'}</td>
-        <td><span class="proc-type-badge ${badgeClass}">${p.tipo.toUpperCase()}</span></td>
-        <td>
-          <button class="btn-secondary" style="padding:6px 12px;font-size:12px;margin-right:6px" onclick="editProcedure(${p.id})">✏️ Editar</button>
-          <button class="btn-danger" onclick="deleteProcedure(${p.id})">🗑️ Eliminar</button>
-        </td>
-      </tr>
-    `;
-  }).join('');
-}
-
-// ===== ADMIN: CATEGORIES =====
-function saveCategory() {
-  const editId = document.getElementById('edit-cat-id').value;
-  const nombre = document.getElementById('cat-nombre').value.trim();
-  const icono = document.getElementById('cat-icono').value.trim();
-  const descripcion = document.getElementById('cat-descripcion').value.trim();
-  const color = document.getElementById('cat-color').value;
-
-  if (!nombre || !icono) { showToast('Completa nombre e ícono', 'error'); return; }
-
-  const data = { nombre, icono, descripcion, color, orden: allCategories.length + 1 };
-
-  const action = editId
-    ? sbUpdate('global_categorias', editId, data)
-    : sbInsert('global_categorias', data);
-
-  action.then(() => {
-    showToast(editId ? 'Categoría actualizada ✓' : 'Categoría creada ✓', 'success');
-    clearCatForm();
-    loadAll();
-  }).catch(() => showToast('Error al guardar', 'error'));
-}
-
-function clearCatForm() {
-  document.getElementById('edit-cat-id').value = '';
-  document.getElementById('cat-nombre').value = '';
-  document.getElementById('cat-icono').value = '';
-  document.getElementById('cat-descripcion').value = '';
-  document.getElementById('cat-color').value = 'red';
-}
-
-function editCategory(id) {
-  const c = allCategories.find(x => x.id === id);
-  if (!c) return;
-  document.getElementById('edit-cat-id').value = c.id;
-  document.getElementById('cat-nombre').value = c.nombre;
-  document.getElementById('cat-icono').value = c.icono;
-  document.getElementById('cat-descripcion').value = c.descripcion || '';
-  document.getElementById('cat-color').value = c.color;
-  switchAdminTab('categories');
-  document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth' });
-}
-
-function deleteCategory(id) {
-  const count = allProcedures.filter(p => p.categoria_id === id).length;
-  if (count > 0) { showToast(`Esta categoría tiene ${count} procedimientos. Muévelos antes de eliminarla.`, 'error'); return; }
-  if (!confirm('¿Eliminar esta categoría?')) return;
-  sbDelete('global_categorias', id).then(() => {
-    showToast('Categoría eliminada', 'success');
-    loadAll();
-  });
-}
-
-function renderCatAdminList() {
-  const container = document.getElementById('cat-admin-list');
-  if (allCategories.length === 0) {
-    container.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📁</div><h3>Sin categorías</h3></div>`;
-    return;
+  function toggleProc(id) {
+    const card = document.getElementById('pc-' + id);
+    card.classList.toggle('expanded');
   }
-  container.innerHTML = allCategories.map(c => {
-    const count = allProcedures.filter(p => p.categoria_id === c.id).length;
-    return `
-      <div class="cat-admin-card">
-        <div class="cat-admin-info">
-          <span class="cat-admin-icon">${c.icono}</span>
-          <div>
-            <div class="cat-admin-name">${c.nombre}</div>
-            <div class="cat-admin-count">${count} procedimiento${count !== 1 ? 's' : ''}</div>
+
+  function filterProcs() { renderProcs(allProcs); }
+  function setFilter(f, el) {
+    currentFilter = f;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderProcs(allProcs);
+  }
+
+  function getYouTubeEmbed(url) {
+    if (!url) return '';
+    let id = '';
+    if (url.includes('youtu.be/')) id = url.split('youtu.be/')[1].split('?')[0];
+    else if (url.includes('v=')) id = url.split('v=')[1].split('&')[0];
+    else id = url;
+    return 'https://www.youtube.com/embed/' + id;
+  }
+
+  // ===== LOAD CATEGORY CARDS (extra cats) =====
+  function loadCategoryCards() {
+    sbFetch('/rest/v1/global_categorias?select=*&order=created_at').then(data => {
+      if (!data || data.error) return;
+      const extraNav = document.getElementById('extra-cats-nav');
+      const extraCards = document.getElementById('extra-cat-cards');
+      if (data.length) {
+        extraNav.innerHTML = data.map(c => `
+          <div class="nav-item" onclick="showExtraCategory('${c.id}','${c.nombre}')" id="nav-cat-${c.id}">
+            <span class="nav-icon">${c.icono || '📌'}</span> ${c.nombre}
+          </div>`).join('');
+
+        if (extraCards) {
+          extraCards.innerHTML = `
+            <div class="section-title" style="margin-bottom:16px;">MÁS CATEGORÍAS</div>
+            <div class="category-grid">${data.map(c => `
+              <div class="category-card" onclick="showExtraCategory('${c.id}','${c.nombre}')">
+                <div class="cat-icon">${c.icono || '📌'}</div>
+                <div class="cat-name">${c.nombre}</div>
+                <div class="cat-desc">${c.descripcion || ''}</div>
+                <div class="cat-count">📄 <strong>0</strong> procedimientos</div>
+              </div>`).join('')}
+            </div>`;
+        }
+
+        // Update admin cat selector
+        const catSel = document.getElementById('proc-cat');
+        data.forEach(c => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          opt.textContent = (c.icono || '📌') + ' ' + c.nombre;
+          catSel.appendChild(opt);
+        });
+      }
+    });
+  }
+
+  function showExtraCategory(id, nombre) {
+    currentCategory = id;
+    currentFilter = 'todos';
+    document.getElementById('proc-view-title').textContent = '📌 ' + nombre;
+    showView('procs');
+    sbFetch('/rest/v1/global_procedimientos?categoria=eq.' + id + '&order=created_at.desc&select=*')
+      .then(data => { allProcs = data || []; renderProcs(allProcs); });
+  }
+
+  // ===== ADMIN =====
+  function openAdmin() {
+    document.getElementById('admin-panel').style.display = 'block';
+    loadAdminProcs();
+    loadAdminUsers();
+    loadAdminCats();
+  }
+
+  function closeAdmin() {
+    document.getElementById('admin-panel').style.display = 'none';
+    loadStats();
+    loadCategoryCards();
+  }
+
+  function switchAdminTab(tab) {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.admin-tab-content').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  function toggleVideoField() {
+    const type = document.getElementById('proc-type').value;
+    document.getElementById('video-url-group').style.display = (type === 'video' || type === 'mixto') ? 'block' : 'none';
+  }
+
+  // SAVE PROC
+  function saveProc() {
+    const titulo = document.getElementById('proc-title').value.trim();
+    const categoria = document.getElementById('proc-cat').value;
+    const tipo = document.getElementById('proc-type').value;
+    const video_url = document.getElementById('proc-video-url').value.trim();
+    const descripcion = document.getElementById('proc-desc').value.trim();
+    const pasos = document.getElementById('proc-steps').value.trim();
+
+    if (!titulo || !categoria) { showToast('Título y categoría son obligatorios', 'error'); return; }
+
+    sbFetch('/rest/v1/global_procedimientos', {
+      method: 'POST',
+      body: JSON.stringify({ titulo, categoria, tipo, video_url: video_url || null, descripcion: descripcion || null, pasos: pasos || null })
+    }).then(data => {
+      if (data && data[0]) {
+        showToast('✅ Procedimiento guardado', 'success');
+        ['proc-title','proc-video-url','proc-desc','proc-steps'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('proc-type').value = 'texto';
+        document.getElementById('video-url-group').style.display = 'none';
+        loadAdminProcs();
+      } else {
+        showToast('Error al guardar: ' + JSON.stringify(data), 'error');
+      }
+    });
+  }
+
+  function loadAdminProcs() {
+    sbFetch('/rest/v1/global_procedimientos?select=*&order=created_at.desc').then(data => {
+      const el = document.getElementById('admin-proc-list');
+      if (!data || data.error || !data.length) { el.innerHTML = '<div style="color:var(--texto-gris);font-size:14px;padding:20px 0;">Sin procedimientos aún.</div>'; return; }
+      el.innerHTML = '<div class="admin-list">' + data.map(p => `
+        <div class="admin-item">
+          <div class="admin-item-info">
+            <div class="admin-item-title">${p.titulo}</div>
+            <div class="admin-item-meta">📁 ${p.categoria} · ${p.tipo}</div>
           </div>
-        </div>
-        <div style="display:flex;gap:6px;">
-          <button class="btn-secondary" style="padding:6px 10px;font-size:12px;" onclick="editCategory(${c.id})">✏️</button>
-          <button class="btn-danger" onclick="deleteCategory(${c.id})">🗑️</button>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-// ===== ADMIN: USERS =====
-function saveUser() {
-  const nombre = document.getElementById('user-nombre').value.trim();
-  const username = document.getElementById('user-username').value.trim();
-  const password = document.getElementById('user-password').value.trim();
-  const rol = document.getElementById('user-rol').value;
-
-  if (!nombre || !username || !password) { showToast('Completa todos los campos', 'error'); return; }
-  if (allUsers.find(u => u.username === username)) { showToast('Ese usuario ya existe', 'error'); return; }
-
-  sbInsert('global_users', { nombre, username, password, rol, activo: true }).then(() => {
-    showToast('Usuario creado ✓', 'success');
-    document.getElementById('user-nombre').value = '';
-    document.getElementById('user-username').value = '';
-    document.getElementById('user-password').value = '';
-    document.getElementById('user-rol').value = 'empleado';
-    loadAll();
-  }).catch(() => showToast('Error al crear usuario', 'error'));
-}
-
-function toggleUserStatus(id, current) {
-  sbUpdate('global_users', id, { activo: !current }).then(() => {
-    showToast(current ? 'Usuario desactivado' : 'Usuario activado', 'success');
-    loadAll();
-  });
-}
-
-function deleteUser(id) {
-  if (currentUser.id === id) { showToast('No puedes eliminarte a ti mismo', 'error'); return; }
-  if (!confirm('¿Eliminar este usuario?')) return;
-  sbDelete('global_users', id).then(() => {
-    showToast('Usuario eliminado', 'success');
-    loadAll();
-  });
-}
-
-function renderUsersTable() {
-  const tbody = document.getElementById('users-tbody');
-  if (allUsers.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:#444;padding:40px">Sin usuarios</td></tr>`;
-    return;
+          <div class="admin-item-actions">
+            <button class="btn-delete" onclick="deleteProc('${p.id}')">🗑 Eliminar</button>
+          </div>
+        </div>`).join('') + '</div>';
+    });
   }
-  tbody.innerHTML = allUsers.map(u => `
-    <tr>
-      <td><strong style="color:#fff">${u.nombre}</strong></td>
-      <td style="color:#aaa">${u.username}</td>
-      <td><span style="color:${u.rol === 'admin' ? 'var(--dorado)' : '#7ba7ff'}">${u.rol.toUpperCase()}</span></td>
-      <td><span class="user-status ${u.activo ? 'status-active' : 'status-inactive'}">${u.activo ? 'Activo' : 'Inactivo'}</span></td>
-      <td>
-        <button class="btn-secondary" style="padding:6px 10px;font-size:12px;margin-right:6px" onclick="toggleUserStatus(${u.id}, ${u.activo})">${u.activo ? '⏸ Desactivar' : '▶ Activar'}</button>
-        <button class="btn-danger" onclick="deleteUser(${u.id})">🗑️</button>
-      </td>
-    </tr>
-  `).join('');
-}
 
-// ===== NAVIGATION =====
-function showSection(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
-  document.getElementById(`section-${name}`).classList.add('active');
-  const navEl = document.getElementById(`nav-${name}`);
-  if (navEl) navEl.classList.add('active');
-
-  if (name === 'procedures' && !currentCategoryFilter) {
-    document.getElementById('bc-category').textContent = 'Todos los Procedimientos';
-    document.getElementById('proc-title').innerHTML = 'Todos los <span>Procedimientos</span>';
-    renderProceduresList(allProcedures);
+  function deleteProc(id) {
+    if (!confirm('¿Eliminar este procedimiento?')) return;
+    sbFetch('/rest/v1/global_procedimientos?id=eq.' + id, { method: 'DELETE', headers: { 'Prefer': 'return=minimal' } })
+      .then(() => { showToast('Procedimiento eliminado', 'success'); loadAdminProcs(); });
   }
-}
 
-function switchAdminTab(tab) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById('admin-procedures').style.display = tab === 'procedures' ? 'block' : 'none';
-  document.getElementById('admin-categories').style.display = tab === 'categories' ? 'block' : 'none';
-  document.getElementById('admin-users').style.display = tab === 'users' ? 'block' : 'none';
-}
-
-// ===== TOAST =====
-function showToast(msg, type = 'success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = `toast ${type} show`;
-  setTimeout(() => t.className = 'toast', 3000);
-}
-
-// ===== BOOT =====
-window.addEventListener('DOMContentLoaded', function() {
-  toggleContentFields();
-  const saved = localStorage.getItem('global_user');
-  if (saved) {
-    currentUser = JSON.parse(saved);
-    initApp();
+  // SAVE CAT
+  function saveCat() {
+    const nombre = document.getElementById('new-cat-name').value.trim();
+    const icono = document.getElementById('new-cat-icon').value.trim();
+    const descripcion = document.getElementById('new-cat-desc').value.trim();
+    if (!nombre) { showToast('Ingresa el nombre de la categoría', 'error'); return; }
+    sbFetch('/rest/v1/global_categorias', {
+      method: 'POST',
+      body: JSON.stringify({ nombre, icono: icono || '📌', descripcion })
+    }).then(data => {
+      if (data && data[0]) {
+        showToast('✅ Categoría agregada', 'success');
+        document.getElementById('new-cat-name').value = '';
+        document.getElementById('new-cat-icon').value = '';
+        document.getElementById('new-cat-desc').value = '';
+        loadAdminCats();
+      }
+    });
   }
-});
+
+  function loadAdminCats() {
+    sbFetch('/rest/v1/global_categorias?select=*&order=created_at').then(data => {
+      const el = document.getElementById('custom-cats-list');
+      if (!data || data.error || !data.length) { el.innerHTML = '<div style="color:var(--texto-gris);font-size:14px;">Sin categorías personalizadas aún.</div>'; return; }
+      el.innerHTML = '<div class="admin-list">' + data.map(c => `
+        <div class="admin-item">
+          <div class="admin-item-info">
+            <div class="admin-item-title">${c.icono || '📌'} ${c.nombre}</div>
+            <div class="admin-item-meta">${c.descripcion || ''}</div>
+          </div>
+          <div class="admin-item-actions">
+            <button class="btn-delete" onclick="deleteCat('${c.id}')">🗑 Eliminar</button>
+          </div>
+        </div>`).join('') + '</div>';
+    });
+  }
+
+  function deleteCat(id) {
+    if (!confirm('¿Eliminar esta categoría?')) return;
+    sbFetch('/rest/v1/global_categorias?id=eq.' + id, { method: 'DELETE', headers: { 'Prefer': 'return=minimal' } })
+      .then(() => { showToast('Categoría eliminada', 'success'); loadAdminCats(); });
+  }
+
+  // USERS
+  function setRole(role) {
+    selectedRole = role;
+    document.getElementById('role-btn-empleado').classList.toggle('active', role === 'empleado');
+    document.getElementById('role-btn-admin').classList.toggle('active', role === 'admin');
+  }
+
+  function saveUser() {
+    const name = document.getElementById('user-name').value.trim();
+    const email = document.getElementById('user-email').value.trim();
+    const password = document.getElementById('user-pass').value.trim();
+    if (!name || !email || !password) { showToast('Completa todos los campos', 'error'); return; }
+    sbFetch('/rest/v1/global_users', {
+      method: 'POST',
+      body: JSON.stringify({ name, email, password, role: selectedRole })
+    }).then(data => {
+      if (data && data[0]) {
+        showToast('✅ Empleado registrado', 'success');
+        document.getElementById('user-name').value = '';
+        document.getElementById('user-email').value = '';
+        document.getElementById('user-pass').value = '';
+        loadAdminUsers();
+      } else {
+        showToast('Error: ' + JSON.stringify(data), 'error');
+      }
+    });
+  }
+
+  function loadAdminUsers() {
+    sbFetch('/rest/v1/global_users?select=*&order=created_at.desc').then(data => {
+      const el = document.getElementById('admin-users-list');
+      if (!data || data.error || !data.length) { el.innerHTML = '<div style="color:var(--texto-gris);font-size:14px;padding:20px 0;">Sin empleados registrados.</div>'; return; }
+      el.innerHTML = '<div class="admin-list">' + data.map(u => `
+        <div class="admin-item">
+          <div class="admin-item-info">
+            <div class="admin-item-title">${u.name} ${u.role === 'admin' ? '⚙️' : '👤'}</div>
+            <div class="admin-item-meta">${u.email} · ${u.role}</div>
+          </div>
+          <div class="admin-item-actions">
+            <button class="btn-delete" onclick="deleteUser('${u.id}')">🗑 Eliminar</button>
+          </div>
+        </div>`).join('') + '</div>';
+    });
+  }
+
+  function deleteUser(id) {
+    if (currentUser && currentUser.id === id) { showToast('No puedes eliminarte a ti mismo', 'error'); return; }
+    if (!confirm('¿Eliminar este empleado?')) return;
+    sbFetch('/rest/v1/global_users?id=eq.' + id, { method: 'DELETE', headers: { 'Prefer': 'return=minimal' } })
+      .then(() => { showToast('Empleado eliminado', 'success'); loadAdminUsers(); });
+  }
+
+  // ===== TOAST =====
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast ' + type + ' show';
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
 </script>
 </body>
 </html>
