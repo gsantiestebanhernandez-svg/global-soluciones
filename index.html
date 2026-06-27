@@ -1283,13 +1283,19 @@
 
   // ===== STATS =====
   function loadStats() {
-    sbFetch('/rest/v1/global_procedimientos?select=id,tipo').then(data => {
+    sbFetch('/rest/v1/global_procedimientos?select=id,tipo,categoria').then(data => {
       if (!data || data.error) return;
       document.getElementById('stat-total').textContent = data.length;
       document.getElementById('stat-videos').textContent = data.filter(p => p.tipo === 'video' || p.tipo === 'mixto').length;
+      // Actualizar contadores de categorías base
       ['boletos','remesas','recargas','general'].forEach(cat => {
         const el = document.getElementById('count-' + cat);
         if (el) el.textContent = data.filter(p => p.categoria === cat).length;
+      });
+      // Actualizar contadores de categorías extra (dinámicas)
+      document.querySelectorAll('[id^="count-extra-"]').forEach(el => {
+        const catId = el.getAttribute('data-cat-id');
+        if (catId) el.textContent = data.filter(p => String(p.categoria) === String(catId)).length;
       });
     });
     sbFetch('/rest/v1/global_users?select=id').then(data => {
@@ -1430,9 +1436,17 @@
                 <div class="cat-icon">${c.icono || '📌'}</div>
                 <div class="cat-name">${c.nombre}</div>
                 <div class="cat-desc">${c.descripcion || ''}</div>
-                <div class="cat-count">📄 <strong>0</strong> procedimientos</div>
+                <div class="cat-count">📄 <strong id="count-extra-${c.id}" data-cat-id="${c.id}">0</strong> procedimientos</div>
               </div>`).join('')}
             </div>`;
+          // Cargar contadores de categorías extra
+          sbFetch('/rest/v1/global_procedimientos?select=id,categoria').then(procs => {
+            if (!procs || procs.error) return;
+            data.forEach(c => {
+              const el = document.getElementById('count-extra-' + c.id);
+              if (el) el.textContent = procs.filter(p => String(p.categoria) === String(c.id)).length;
+            });
+          });
         }
 
         // Update admin cat selector
@@ -1637,3 +1651,4 @@
 </script>
 </body>
 </html>
+
